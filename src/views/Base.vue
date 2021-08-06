@@ -1,8 +1,8 @@
 <template>
   <v-app>
-    <dashboard-core-app-bar />
+    <app-bar />
 
-    <!-- <dashboard-core-drawer /> -->
+    <drawer />
 
     <!-- <dashboard-core-view /> -->
   </v-app>
@@ -13,8 +13,8 @@ export default {
 
     name: 'Base',
     components: {
-      DashboardCoreAppBar: () => import('../components/base/AppBar'),
-    //   DashboardCoreDrawer: () => import('../components/base/Drawer'),
+      AppBar: () => import('../components/base/AppBar'),
+      Drawer: () => import('../components/base/Drawer'),
     //   DashboardCoreView: () => import('../components/base/View'),
     },
 
