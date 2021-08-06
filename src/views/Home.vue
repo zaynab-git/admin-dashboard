@@ -1,14 +1,9 @@
 <template>
-  <div class="about">
-    <h1>This is a home page</h1>
-  </div>
+  <h1> {{ $t('hi') }} </h1>
 </template>
 
 <script>
 export default {
   name: "Home",
-  data: () => {
-    //
-  }
 };
 </script>
