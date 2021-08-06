@@ -1,10 +1,11 @@
 <template>
+  
   <v-app>
     <app-bar />
 
-    <drawer />
+    <app-drawer />
 
-    <!-- <dashboard-core-view /> -->
+    <app-view />
   </v-app>
 </template>
 
@@ -14,8 +15,8 @@ export default {
     name: 'Base',
     components: {
       AppBar: () => import('../components/base/AppBar'),
-      Drawer: () => import('../components/base/Drawer'),
-    //   DashboardCoreView: () => import('../components/base/View'),
+      AppDrawer: () => import('../components/base/Drawer'),
+      AppView: () => import('../components/base/View'),
     },
 
 }

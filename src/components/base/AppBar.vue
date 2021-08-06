@@ -1,27 +1,15 @@
 <template>
   <v-app-bar
-    id="app-bar"
-    absolute
     app
+    clipped-left
+    dense
     color="transparent"
     height="75"
   >
 
-    <v-btn
-      class="mr-3"
-      elevation="1"
-      fab
-      small
-      @click.close="setDrawer(!drawer)"
-    >
-      <v-icon v-if="value">
-        mdi-view-quilt
-      </v-icon>
-
-      <v-icon v-else>
-        mdi-dots-vertical
-      </v-icon>
-    </v-btn>
+    <v-app-bar-nav-icon
+      @click.stop="setDrawer(!drawer)"
+    ></v-app-bar-nav-icon>
 
     <v-toolbar-title
     class="hidden-sm"
@@ -67,7 +55,8 @@
         ></v-img> 
 
     </v-btn>
-  </v-app-bar>
+  </v-app-bar>  
+
 </template>
 
 <script>
