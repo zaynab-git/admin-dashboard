@@ -29,6 +29,7 @@ export default {
         changeLanguage: function(name) {
             this.$i18n.locale = this.lang[name]
             this.$vuetify.rtl = !this.$vuetify.rtl
+            this.$vuetify.lang.current = 'fa'
         }
     }
 }
