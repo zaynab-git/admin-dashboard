@@ -48,9 +48,9 @@
 
     data: () => ({
       items: [
-          { title: 'Dashboard', icon: 'mdi-view-dashboard' },
-          { title: 'Photos', icon: 'mdi-image' },
-          { title: 'About', icon: 'mdi-help-box' },
+          { title: 'Dashboard', icon: 'mdi-view-dashboard', to: '/' },
+          { title: 'Photos', icon: 'mdi-image', to: '/setting' },
+          { title: 'About', icon: 'mdi-help-box', to: '/' },
         ],
     }),
 
