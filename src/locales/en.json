@@ -1,4 +1,10 @@
 {
-    "hi": "hi",
-    "search": "search"   
+    "dashboard": "Dashboard",
+    "search": "search",
+    "name": "zeynab",
+    "welcome": "welcome to your dashboard",
+    "language": "language",
+    "setting": "Setting",
+    "about": "About"
+
 }

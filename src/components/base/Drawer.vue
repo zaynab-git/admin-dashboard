@@ -4,15 +4,16 @@
     app
     clipped
     mobile-breakpoint="960"
+    :right="this.$vuetify.rtl"
   >
 
     <v-list-item>
         <v-list-item-content>
           <v-list-item-title class="text-h6">
-            zeynab
+            {{ $t("name") }}
           </v-list-item-title>
           <v-list-item-subtitle>
-            welcome to your dashboard
+            {{ $t("welcome") }}
           </v-list-item-subtitle>
         </v-list-item-content>
       </v-list-item>
@@ -33,7 +34,7 @@
           </v-list-item-icon>
 
           <v-list-item-content>
-            <v-list-item-title>{{ item.title }}</v-list-item-title>
+            <v-list-item-title>{{ $t(item.title) }}</v-list-item-title>
           </v-list-item-content>
         </v-list-item>
       </v-list>
@@ -48,9 +49,9 @@
 
     data: () => ({
       items: [
-          { title: 'Dashboard', icon: 'mdi-view-dashboard', to: '/' },
-          { title: 'Photos', icon: 'mdi-image', to: '/setting' },
-          { title: 'About', icon: 'mdi-help-box', to: '/' },
+          { title: "dashboard", icon: 'mdi-view-dashboard', to: '/' },
+          { title: "setting", icon: 'mdi-image', to: '/setting' },
+          { title: "about", icon: 'mdi-help-box', to: '/' },
         ],
     }),
 

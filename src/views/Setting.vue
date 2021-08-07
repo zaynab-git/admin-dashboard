@@ -1,9 +1,8 @@
 <template>
-    <v-container >
         <v-col class="ma-5">
             <v-row>
                 <v-card>
-                    <v-card-title>Language</v-card-title>
+                    <v-card-title>{{ $t("language") }}</v-card-title>
                     <v-autocomplete
                     auto-select-first
                     outlined
@@ -16,7 +15,6 @@
                 </v-card>
             </v-row>
         </v-col>
-    </v-container>
 </template>
 
 <script>
@@ -32,7 +30,8 @@ export default {
     }),
     methods: {
         changeLanguage: function(name) {
-        this.$i18n.locale = this.lang[name]
+            this.$i18n.locale = this.lang[name]
+            this.$vuetify.rtl = true
         }
     }
 }
