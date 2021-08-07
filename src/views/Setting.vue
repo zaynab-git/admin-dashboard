@@ -3,15 +3,12 @@
             <v-row>
                 <v-card>
                     <v-card-title>{{ $t("language") }}</v-card-title>
-                    <v-autocomplete
-                    auto-select-first
-                    outlined
-                    dense
+                    <v-select
                     v-model="value"
                     :items="items"
                     class="mx-3"
                     @change="changeLanguage(value)"
-                    ></v-autocomplete>            
+                    ></v-select>            
                 </v-card>
             </v-row>
         </v-col>
@@ -31,7 +28,7 @@ export default {
     methods: {
         changeLanguage: function(name) {
             this.$i18n.locale = this.lang[name]
-            this.$vuetify.rtl = true
+            this.$vuetify.rtl = !this.$vuetify.rtl
         }
     }
 }
