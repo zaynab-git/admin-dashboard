@@ -3,6 +3,7 @@
     v-model="drawer"
     app
     clipped
+    mobile-breakpoint="960"
   >
 
     <v-list-item>

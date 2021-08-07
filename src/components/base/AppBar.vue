@@ -1,6 +1,7 @@
 <template>
   <v-app-bar
     app
+    absolute
     clipped-left
     dense
     color="transparent"
