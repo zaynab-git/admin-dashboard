@@ -15,7 +15,7 @@
     <v-toolbar-title
     class="hidden-sm"
     >
-    Dashboard
+    {{ $t("dashboard") }}
     </v-toolbar-title>
     
 

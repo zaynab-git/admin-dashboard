@@ -26,6 +26,7 @@
       >
         <v-list-item
           v-for="item in items"
+          :to="item.to"
           :key="item.title"
           link
         >
@@ -50,8 +51,8 @@
     data: () => ({
       items: [
           { title: "dashboard", icon: 'mdi-view-dashboard', to: '/' },
-          { title: "setting", icon: 'mdi-image', to: '/setting' },
-          { title: "about", icon: 'mdi-help-box', to: '/' },
+          { title: "setting", icon: 'mdi-cog', to: '/setting' },
+        //   { title: "about", icon: 'mdi-help-box', to: '/about' },
         ],
     }),
 
