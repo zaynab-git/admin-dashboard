@@ -4,10 +4,11 @@
                 <v-card>
                     <v-card-title>{{ $t("language") }}</v-card-title>
                     <v-select
-                    v-model="value"
-                    :items="items"
+                    v-model="language"
+                    :items="this.$store.state.languages"
+                    item-text="name"
+                    return-object
                     class="mx-3"
-                    @change="changeLanguage(value)"
                     ></v-select>            
                 </v-card>
             </v-row>
@@ -15,26 +16,23 @@
 </template>
 
 <script>
+
 export default {
     name: "Setting",
     data: () => ({
-        items: ['English', 'Persian'],
-        value: 'English',
-        lang: {
-            "English": 'en',
-            "Persian": 'fa'
-      }
+        //
     }),
-    methods: {
-        changeLanguage: function(name) {
-            this.$i18n.locale = this.lang[name]
-            this.$vuetify.rtl = !this.$vuetify.rtl
-            this.$vuetify.lang.current = 'fa'
-        }
-    }
+    
+
+    computed: {
+      language: {
+          get() {
+              return this.$store.state.currentLanguage
+          },
+          set(value) {
+            this.$store.commit('SET_LANGUAGE',{language: value, i18n: this.$i18n, vuetify: this.$vuetify})
+          }
+      }
+    },
 }
 </script>
-
-<style>
-
-</style>

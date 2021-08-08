@@ -4,7 +4,7 @@
     app
     clipped
     mobile-breakpoint="960"
-    :right="this.$vuetify.rtl"
+    :right="this.$store.state.currentLanguage.rtl"
   >
 
     <v-list-item>
