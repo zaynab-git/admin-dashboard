@@ -1,11 +1,13 @@
-{
-    
+{   
     "dashboard": "Dashboard",
     "search": "search",
     "name": "zeynab",
     "welcome": "welcome to your dashboard",
     "language": "language",
     "setting": "Setting",
-    "about": "About"
-    
+    "about": "About",
+    "profile-title": "Profile",
+    "profile-subtitle": "here, you can edit your profile",
+    "profile": "Profile"
+
 }

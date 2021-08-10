@@ -52,7 +52,7 @@
       items: [
           { title: "dashboard", icon: 'mdi-view-dashboard', to: '/' },
           { title: "setting", icon: 'mdi-cog', to: '/setting' },
-        //   { title: "about", icon: 'mdi-help-box', to: '/about' },
+          { title: "profile", icon: 'mdi-account', to: '/profile' },
         ],
     }),
 

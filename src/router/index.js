@@ -21,6 +21,11 @@ export default new VueRouter({
           path: 'setting',
           component: () => import('@/views/Setting'),
         },
+        {
+          name: 'Profile',
+          path: 'profile',
+          component: () => import('@/views/Profile'),
+        },
       //   {
       //     name: 'Notifications',
       //     path: 'components/notifications',
