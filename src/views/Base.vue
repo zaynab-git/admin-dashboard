@@ -19,5 +19,9 @@ export default {
       AppView: () => import('../components/base/View'),
     },
 
+    created(){
+      this.$store.dispatch("GET_USER");
+    }
+
 }
 </script>
