@@ -1,11 +1,20 @@
 import Vue from "vue";
 import Vuex from "vuex";
+import axios from "axios";
 
 
 Vue.use(Vuex);
 
 export default new Vuex.Store({
   state: {
+
+    user: {
+      firstName: "",
+      lastName: "",
+      email: "",
+      phoneNumber: ""
+    },
+
     drawer: null,
 
     currentLanguage: {
@@ -39,8 +48,21 @@ export default new Vuex.Store({
       payload.vuetify.rtl = payload.language.rtl
       payload.vuetify.lang.current = payload.language.value
     },
+    SET_USER (state, payload) {
+      state.user.firstName = payload.first_name;
+      state.user.lastName = payload.last_name;
+      state.user.email = payload.email;
+      state.user.phoneNumber = payload.phone_number;
+      state.user.userName = payload.user_name;
+    },
   },
-  actions: {
 
-  },
+  actions: {
+    GET_USER () {
+      axios.get('http://127.0.0.1:4010/users/zeynab')
+        .then(response => {
+          this.commit('SET_USER', response.data)
+        })
+    }
+  }
 });
