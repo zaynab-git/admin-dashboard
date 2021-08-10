@@ -1,0 +1,95 @@
+openapi: 3.0.0
+info:
+  description: "This is a sample user server."
+  version: "1.0.0"
+  title: "Sample API"
+  contact:
+    name: Zeynab Heydarzadeh
+    email: zeinabheidarzadeh1377@gmail.com
+servers:
+  - url: 'http://localhost:1200'
+    description: local
+paths:
+  /users:
+    get:
+      description: Returns the list of users     
+      operationId: get-users
+      responses:
+        '200':
+          description: Successfully returned the list
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/user_info'
+        '400':
+          $ref: '#/components/responses/400Error'
+         
+    post:
+      description: Lets a user post a new artist
+      operationId: post-user
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/user_info'
+      responses:
+        '200':
+          description: Successfully created a new user
+        '400':
+          $ref: '#/components/responses/400Error'
+            
+  /users/{username}:
+    get:
+      description: Returns information of a specific user
+      operationId: getj-user
+      parameters:
+        - name: username
+          in: path
+          required: true
+          schema:
+            type: string
+          
+      responses:
+        '200':
+          description: Successfully returned the user`s info
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/user_info'
+                
+        '400':
+          $ref: '#/components/responses/400Error'
+                    
+          
+components:
+  schemas:
+    user_info:
+      type: object
+      properties:
+        user_name:
+          type: string
+        first_name:
+          type: string
+        last_name:
+          type: string
+        email:
+          type: string
+        phone_number:
+          type: integer
+  responses:
+    400Error:
+      description: Invalid request
+      content:
+        application/json:
+          schema:
+            type: object 
+            properties:
+              message:
+                type: string
+
+  
+  
+  
