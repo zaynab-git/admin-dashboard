@@ -10,10 +10,10 @@
     <v-list-item>
         <v-list-item-content>
           <v-list-item-title class="text-h6">
-            {{ $t("name") }}
+            {{ $t("drawer.title") }}
           </v-list-item-title>
           <v-list-item-subtitle>
-            {{ $t("welcome") }}
+            {{ $t("drawer.subtitle") }}
           </v-list-item-subtitle>
         </v-list-item-content>
       </v-list-item>
@@ -50,9 +50,9 @@
 
     data: () => ({
       items: [
-          { title: "dashboard", icon: 'mdi-view-dashboard', to: '/' },
-          { title: "setting", icon: 'mdi-cog', to: '/setting' },
-          { title: "profile", icon: 'mdi-account', to: '/profile' },
+          { title: "drawer.dashboard", icon: 'mdi-view-dashboard', to: '/' },
+          { title: "drawer.setting", icon: 'mdi-cog', to: '/setting' },
+          { title: "drawer.profile", icon: 'mdi-account', to: '/profile' },
         ],
     }),
 

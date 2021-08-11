@@ -15,14 +15,13 @@
     <v-toolbar-title
     class="hidden-sm"
     >
-    {{ $t("dashboard") }}
+    {{ $t("bar.dashboard") }}
     </v-toolbar-title>
-    
 
     <v-spacer />
 
     <v-text-field
-      :label="$t('search')"
+      :label="$t('bar.search')"
       color="secondary"
       hide-details
       style="max-width: 165px;"

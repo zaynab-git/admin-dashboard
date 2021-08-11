@@ -51,10 +51,13 @@ export default new Vuex.Store({
       state.drawer = payload
     },
     SET_LANGUAGE (state, payload) {
-      state.currentLanguage = payload.language
-      payload.i18n.locale = payload.language.value
-      payload.vuetify.rtl = payload.language.rtl
-      payload.vuetify.lang.current = payload.language.value
+      if (payload.language != ''){
+        state.currentLanguage = payload.language
+        payload.i18n.locale = payload.language.value
+        payload.vuetify.rtl = payload.language.rtl
+        payload.vuetify.lang.current = payload.language.value
+        localStorage.setItem('language', JSON.stringify(payload.language))
+      }
     },
     SET_USER (state, payload) {
       state.user.firstName = payload.first_name;
@@ -108,6 +111,6 @@ export default new Vuex.Store({
           reject(err)
         })
       })
-  },
+    },
   }
 });

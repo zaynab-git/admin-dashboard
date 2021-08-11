@@ -1,25 +1,48 @@
 {   
-    "dashboard": "Dashboard",
-    "search": "search",
-    "name": "zeynab",
-    "welcome": "welcome to your dashboard",
-    "language": "language",
-    "setting": "Setting",
-    "about": "About",
-    "profile-title": "Profile",
-    "profile-subtitle": "here, you can edit your profile",
-    "profile": "Profile",
-    "authentication": {
-        "logIn": "LOG IN",
-        "logOut": "LOG OUT"
+    "drawer": {
+        "dashboard": "Dashboard",
+        "setting": "Setting",
+        "about": "About",
+        "profile": "Profile",
+        "title": "zeynab",
+        "subtitle": "welcome to your dashboard"
     },
-    "errors": {
-        "formErrors": {
-            "max10Char": "Username must be at most 10 characters long",
-            "min6Char": "Password must be at least 6 characters long",
-            "requiredUsername": "Username is required",
-            "requiredPassword": "Password is required"
-        }
+    
+    "profile": {
+        "profile-title": "Profile",
+        "profile-subtitle": "Here, you can edit your profile",
+        "first-name": "First Name",
+        "last-name": "Last Name",
+        "email": "Email",
+        "phone-number": "Phone Number",
+        "username": "Username"
+    },
+
+    "bar": {
+        "search": "search",
+        "dashboard": "Dashboard"
+    },
+
+    "setting": {
+        "language": "language"
+    },
+
+    "authentication": {
+        "log-in": {
+            "title": "LOG IN",
+            "username": "username",
+            "password": "password",
+            "submit": "submit",
+            "errors": {
+                "max-10-char": "Username must be at most 10 characters long",
+                "min-6-char": "Password must be at least 6 characters long",
+                "required-username": "Username is required",
+                "required-password": "Password is required"
+            }
+        },
+        "log-out": "LOG OUT"
     }
+
+    
 
 }

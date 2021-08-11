@@ -2,12 +2,12 @@
     <div 
       style="width: 40%; margin: auto; margin-top: 100px;">
         <form >
-            <h1>{{ $t('authentication.logIn') }}</h1>
+            <h1>{{ $t('authentication.log-in.title') }}</h1>
             <v-text-field
                 v-model="username"
                 :error-messages="usernameErrors"
                 :counter="10"
-                label="Username"
+                :label="this.$t('authentication.log-in.username')"
                 required
                 @input="$v.username.$touch()"
                 @blur="$v.username.$touch()"
@@ -16,7 +16,7 @@
                 v-model="password"
                 :error-messages="passwordErrors"
                 :counter="6"
-                label="Password"
+                :label="this.$t('authentication.log-in.password')"
                 type="password"
                 required
                 @input="$v.password.$touch()"
@@ -26,7 +26,7 @@
                 class="mr-4"
                 @click="submit"
             >
-                submit
+                {{$t('authentication.log-in.submit')}}
             </v-btn>
         </form>
     </div>           
@@ -53,26 +53,36 @@
       usernameErrors () {
         const errors = []
         if (!this.$v.username.$dirty) return errors
-        !this.$v.username.maxLength && errors.push(this.$t('errors.formErrors.max10Char'))
-        !this.$v.username.required && errors.push(this.$t('errors.formErrors.requiredUsername'))
+        !this.$v.username.maxLength && errors.push(this.$t('authentication.log-in.errors.max-1char'))
+        !this.$v.username.required && errors.push(this.$t('authentication.log-in.errors.required-username'))
         return errors
       },
       passwordErrors () {
         const errors = []
         if (!this.$v.password.$dirty) return errors
-        !this.$v.password.minLength && errors.push(this.$t('errors.formErrors.min6Char'))
-        !this.$v.password.required && errors.push(this.$t('errors.formErrors.requiredPassword'))
+        !this.$v.password.minLength && errors.push(this.$t('authentication.log-in.errors.min-6-char'))
+        !this.$v.password.required && errors.push(this.$t('authentication.log-in.errors.required-password'))
         return errors
       },
     },
 
     methods: {
       submit: function () {
-        let username = this.username
-        let password = this.password
-        this.$store.dispatch('login', { username, password })
-       .then(() => this.$router.push('/'))
-       .catch(err => console.log(err))
+        this.$v.$touch()
+        if (this.$v.$invalid) {
+          this.submitStatus = 'ERROR'
+        } else {
+          let username = this.username
+          let password = this.password
+          this.$store.dispatch('login', { username, password })
+          .then(() => this.$router.push('/'))
+          .catch(err => console.log(err))
+          // this.submitStatus = 'PENDING'
+          // setTimeout(() => {
+          //   this.submitStatus = 'OK'
+          // }, 500)
+        }
+        
       }
     },
   }

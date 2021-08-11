@@ -2,7 +2,7 @@
         <v-col class="ma-5">
             <v-row>
                 <v-card>
-                    <v-card-title>{{ $t("language") }}</v-card-title>
+                    <v-card-title>{{ $t("setting.language") }}</v-card-title>
                     <v-select
                     v-model="language"
                     :items="this.$store.state.languages"

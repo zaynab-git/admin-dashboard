@@ -1,24 +1,45 @@
-{
-    "dashboard": "داشبورد",
-    "search": "جست و جو",
-    "name": "زینب",
-    "welcome": "به داشبورد خود خوش آمدید",
-    "language": "زبان",
-    "setting": "تنظیمات",
-    "about": "درباره ما",
-    "profile-title": "اطلاعات شخصی",
-    "profile-subtitle": "در این بخش، شما می توانید اطلاعات خود را ویرایش کنید",
-    "profile": "اطلاعات شخصی",
-    "authentication": {
-        "logIn": "ورود",
-        "logOut": "خروج"
+{   
+    "drawer": {
+        "dashboard": "داشبورد",
+        "setting": "تنظیمات",
+        "about": "درباره ما",
+        "profile": "اطلاعات شخصی",
+        "title": "زینب",
+        "subtitle": "به داشبورد خود خوش آمدید"
     },
-    "errors": {
-        "formErrors": {
-            "max10Char": "نام کاربری باید حداکثر 10 کاراکتر داشته باشد",
-            "min6Char": "رمز ورود باید حداقل 6 کاراکتر داشته باشد",
-            "requiredUsername": "نام کاربری الزامی است",
-            "requiredPassword": "رمز ورود الزامی است"
-        }
+    
+    "profile": {
+        "profile-title": "اطلاعات شخصی",
+        "profile-subtitle": "در این بخش، شما می توانید اطلاعات خود را ویرایش کنید",
+        "first-name": "نام",
+        "last-name": "نام خانوادگی",
+        "email": "امیل",
+        "phone-number": "شماره تلفن",
+        "username": "نام کاربری"
+    },
+
+    "bar": {
+        "search": "جست و جو",
+        "dashboard": "داشبورد"
+    },
+
+    "setting": {
+        "language": "زبان"
+    },
+
+    "authentication": {
+        "log-in": {
+            "title": "ورود",
+            "username": "نام کاربری",
+            "password": "پسورد",
+            "submit": "ورود",
+            "errors": {
+                "max-10-char": "نام کاربری باید حداکثر 10 کاراکتر داشته باشد",
+                "min-6-char": "رمز ورود باید حداقل 6 کاراکتر داشته باشد",
+                "required-username": "نام کاربری الزامی است",
+                "required-password": "رمز ورود الزامی است"
+            }
+        },
+        "log out": "خروج"
     }
 }
