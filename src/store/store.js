@@ -7,16 +7,17 @@ Vue.use(Vuex);
 
 export default new Vuex.Store({
   state: {
-
     status: '',
     token: localStorage.getItem('token') || '',
+
     user: {
       firstName: "",
       lastName: "",
       email: "",
-      phoneNumber: ""
+      phoneNumber: "",
+      userName: "",
     },
-    
+
     drawer: null,
 
     currentLanguage: {
@@ -60,15 +61,14 @@ export default new Vuex.Store({
       state.user.lastName = payload.last_name;
       state.user.email = payload.email;
       state.user.phoneNumber = payload.phone_number;
-      state.user.userName = payload.user_name;
+      state.user.userName = payload.username;
     },
     auth_request(state){
       state.status = 'loading'
     },
-    auth_success(state, token, user){
+    auth_success(state, token){
       state.status = 'success'
       state.token = token
-      state.user = user
     },
     auth_error(state){
       state.status = 'error'
@@ -81,7 +81,12 @@ export default new Vuex.Store({
 
   actions: {
     GET_USER () {
-      axios.get('http://127.0.0.1:4010/users/zeynab')
+      axios.get('http://127.0.0.1:4010/users/zeynab',
+      {
+        headers: {
+          'Authorization': this.state.token
+        }
+      })
         .then(response => {
           this.commit('SET_USER', response.data)
         })
@@ -94,8 +99,7 @@ export default new Vuex.Store({
         .then(resp => {
           const token = resp.data.token
           localStorage.setItem('token', token)
-          axios.defaults.headers.common['Authorization'] = token
-          commit('auth_success', token, user)
+          commit('auth_success', token)
           resolve(resp)
         })
         .catch(err => {

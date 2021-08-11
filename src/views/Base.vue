@@ -19,7 +19,7 @@ export default {
       AppView: () => import('../components/base/View'),
     },
 
-    created(){
+    mounted(){
       this.$store.dispatch("GET_USER");
     }
 }
