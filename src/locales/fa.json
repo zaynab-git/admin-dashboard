@@ -8,5 +8,17 @@
     "about": "درباره ما",
     "profile-title": "اطلاعات شخصی",
     "profile-subtitle": "در این بخش، شما می توانید اطلاعات خود را ویرایش کنید",
-    "profile": "اطلاعات شخصی"
+    "profile": "اطلاعات شخصی",
+    "authentication": {
+        "logIn": "ورود",
+        "logOut": "خروج"
+    },
+    "errors": {
+        "formErrors": {
+            "max10Char": "نام کاربری باید حداکثر 10 کاراکتر داشته باشد",
+            "min6Char": "رمز ورود باید حداقل 6 کاراکتر داشته باشد",
+            "requiredUsername": "نام کاربری الزامی است",
+            "requiredPassword": "رمز ورود الزامی است"
+        }
+    }
 }

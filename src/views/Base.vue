@@ -22,6 +22,5 @@ export default {
     created(){
       this.$store.dispatch("GET_USER");
     }
-
 }
 </script>

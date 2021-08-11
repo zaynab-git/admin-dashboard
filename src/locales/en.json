@@ -8,6 +8,18 @@
     "about": "About",
     "profile-title": "Profile",
     "profile-subtitle": "here, you can edit your profile",
-    "profile": "Profile"
+    "profile": "Profile",
+    "authentication": {
+        "logIn": "LOG IN",
+        "logOut": "LOG OUT"
+    },
+    "errors": {
+        "formErrors": {
+            "max10Char": "Username must be at most 10 characters long",
+            "min6Char": "Password must be at least 6 characters long",
+            "requiredUsername": "Username is required",
+            "requiredPassword": "Password is required"
+        }
+    }
 
 }
