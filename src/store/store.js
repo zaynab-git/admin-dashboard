@@ -10,6 +10,10 @@ export default new Vuex.Store({
     status: '',
     token: localStorage.getItem('token') || '',
 
+    vuetify: '',
+    i18n: '',
+
+
     user: {
       firstName: "",
       lastName: "",
@@ -47,17 +51,24 @@ export default new Vuex.Store({
   },
 
   mutations: {
+
+    set_vuetifyandi18n (state, payload) {
+        state.vuetify = payload.vuetify
+        state.i18n = payload.i18n
+    },
+
     SET_DRAWER (state, payload) {
       state.drawer = payload
     },
     SET_LANGUAGE (state, payload) {
-      if (payload.language != ''){
-        state.currentLanguage = payload.language
-        payload.i18n.locale = payload.language.value
-        payload.vuetify.rtl = payload.language.rtl
-        payload.vuetify.lang.current = payload.language.value
-        localStorage.setItem('language', JSON.stringify(payload.language))
+      if (payload != ''){
+        state.currentLanguage = payload
+        state.i18n.locale = payload.value
+        state.vuetify.rtl = payload.rtl
+        state.vuetify.lang.current = payload.value
+        localStorage.setItem('language', JSON.stringify(payload))
       }
+  
     },
     SET_USER (state, payload) {
       state.user.firstName = payload.first_name;
@@ -116,6 +127,7 @@ export default new Vuex.Store({
     logout({commit}){
       return new Promise((resolve) => {
         commit('logout')
+        commit('SET_LANGUAGE',this.state.languages[0])
         localStorage.removeItem('token')
         localStorage.removeItem('language')
         resolve()

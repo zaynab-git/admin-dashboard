@@ -30,7 +30,7 @@ export default {
               return this.$store.state.currentLanguage
           },
           set(value) {
-            this.$store.commit('SET_LANGUAGE',{language: value, i18n: this.$i18n, vuetify: this.$vuetify})
+            this.$store.commit('SET_LANGUAGE',value)
           }
       }
     },
