@@ -5,7 +5,8 @@
         "about": "About",
         "profile": "Profile",
         "title": "zeynab",
-        "subtitle": "welcome to your dashboard"
+        "subtitle": "welcome to your dashboard",
+        "log-out": "LOG OUT"
     },
     
     "profile": {
@@ -39,8 +40,8 @@
                 "required-username": "Username is required",
                 "required-password": "Password is required"
             }
-        },
-        "log-out": "LOG OUT"
+        }
+        
     }
 
     

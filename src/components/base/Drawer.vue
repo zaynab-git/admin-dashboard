@@ -40,6 +40,21 @@
         </v-list-item>
       </v-list>
 
+      <template v-slot:append>
+      <v-list-item
+      link
+      @click="logOut"
+      >
+        <v-list-item-icon >
+            <v-icon>mdi-logout</v-icon>
+          </v-list-item-icon>
+
+          <v-list-item-content>
+            <v-list-item-title class="caption">{{ $t('drawer.log-out') }}</v-list-item-title>
+          </v-list-item-content>
+      </v-list-item>
+    </template>
+
   </v-navigation-drawer>
 </template>
 
@@ -66,6 +81,15 @@
         },
       },
     },
+
+    methods: {
+      logOut: function () {
+        this.$store.dispatch('logout')
+        .then(() => {
+          this.$router.push('/login')
+        })
+      }
+    }
 
 
   }

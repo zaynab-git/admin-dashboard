@@ -112,5 +112,15 @@ export default new Vuex.Store({
         })
       })
     },
+
+    logout({commit}){
+      return new Promise((resolve) => {
+        commit('logout')
+        localStorage.removeItem('token')
+        localStorage.removeItem('language')
+        resolve()
+      })
+    }
+
   }
 });
