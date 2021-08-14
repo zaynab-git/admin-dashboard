@@ -6,25 +6,28 @@
             <v-text-field
                 v-model="username"
                 :error-messages="usernameErrors"
-                :counter="10"
                 :label="this.$t('authentication.log-in.username')"
                 required
                 @input="$v.username.$touch()"
                 @blur="$v.username.$touch()"
+                v-on:keyup.enter="$refs.password.focus()"
                 ></v-text-field>
             <v-text-field
                 v-model="password"
                 :error-messages="passwordErrors"
-                :counter="6"
                 :label="this.$t('authentication.log-in.password')"
                 type="password"
                 required
+                ref="password"
                 @input="$v.password.$touch()"
                 @blur="$v.password.$touch()"
+                v-on:keyup.enter="$refs.submit.$el.focus()"
             ></v-text-field>
             <v-btn
                 class="mr-4"
                 @click="submit"
+                v-on:keyup.enter="submit"
+                ref="submit"
             >
                 {{$t('authentication.log-in.submit')}}
             </v-btn>
@@ -53,7 +56,7 @@
       usernameErrors () {
         const errors = []
         if (!this.$v.username.$dirty) return errors
-        !this.$v.username.maxLength && errors.push(this.$t('authentication.log-in.errors.max-1char'))
+        !this.$v.username.maxLength && errors.push(this.$t('authentication.log-in.errors.max-10-char'))
         !this.$v.username.required && errors.push(this.$t('authentication.log-in.errors.required-username'))
         return errors
       },
@@ -77,10 +80,6 @@
           this.$store.dispatch('login', { username, password })
           .then(() => this.$router.push('/'))
           .catch(err => console.log(err))
-          // this.submitStatus = 'PENDING'
-          // setTimeout(() => {
-          //   this.submitStatus = 'OK'
-          // }, 500)
         }
         
       }
