@@ -14,6 +14,7 @@ export default new Vuex.Store({
     i18n: '',
 
     messages: {},
+    chatConnection: '',
 
     user: {
       firstName: "",
@@ -61,6 +62,7 @@ export default new Vuex.Store({
       return con_msgs
     }
   },
+
   mutations: {
 
     set_username (state, payload) {
@@ -127,6 +129,19 @@ export default new Vuex.Store({
         .then(response => {
           this.commit('SET_USER', response.data)
         })
+    },
+
+    connect_to_websocket() {
+      console.log("Starting connection to WebSocket Server")
+      this.state.chatConnection = new WebSocket("ws://localhost:8080")
+      let that = this;
+      this.state.chatConnection.onmessage = function(event) {
+        that.commit('add_message',JSON.parse(event.data));
+      }
+
+      this.state.chatConnection.onopen = function() {
+        console.log("Successfully connected to the echo websocket server...");
+      }
     },
 
     login({commit}, user){
