@@ -1,5 +1,5 @@
 import Vue from "vue";
-import App from "./App.vue";
+// import App from "./App.vue";
 import router from "./router/router";
 import store from "./store/store";
 import vuetify from "./plugins/vuetify";
@@ -11,8 +11,8 @@ Vue.config.productionTip = false;
 router.beforeEach((to, from, next) => {
 
   if (store.getters.isLoggedIn) {
-    if (to.path == '/login') {
-      next('/')
+    if (to.path == 'login') {
+      next('')
     }
     next()
   }
@@ -29,5 +29,5 @@ new Vue({
   store,
   vuetify,
   i18n,
-  render: (h) => h(App),
+  render: (h) => {return h('router-view')},
 }).$mount("#app");

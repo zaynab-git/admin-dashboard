@@ -21,7 +21,7 @@ export default new Vuex.Store({
       lastName: "",
       email: "",
       phoneNumber: "",
-      userName: "",
+      userName: ""
     },
 
     drawer: null,
@@ -100,7 +100,6 @@ export default new Vuex.Store({
       state.user.lastName = payload.last_name;
       state.user.email = payload.email;
       state.user.phoneNumber = payload.phone_number;
-      state.user.userName = payload.username;
     },
     auth_request(state){
       state.status = 'loading'
@@ -151,6 +150,7 @@ export default new Vuex.Store({
           // const token = resp.data.token
           const token = 'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJ0b3B0YWwuY29tIiwiZXhwIjoxNDI2NDIwODAwLCJodHRwOi8vdG9wdGFsLmNvbS9qd3RfY2xhaW1zL2lzX2FkbWluIjp0cnVlLCJjb21wYW55IjoiVG9wdGFsIiwiYXdlc29tZSI6dHJ1ZX0.yRQYnWzskCZUxPwaQupWkiUzKELZ49eM7oWxAQK_ZXw'
           localStorage.setItem('token', token)
+          this.state.user.userName = user.username
           commit('auth_success', token)
           commit('set_username',user.username)
           resolve(resp)
