@@ -29,7 +29,7 @@ export default {
     sendMessage: function(e) {
       e.preventDefault();
       if (e.target.value === '') return;
-      this.$store.state.chatConnection.send(JSON.stringify({username: this.$store.state.user.userName, message: e.target.value, id: Date.now()}));
+      this.$store.state.chatConnection.send(JSON.stringify({receiver: 'admin',sender: this.$store.state.user.userName, message: e.target.value, id: Date.now()}));
       e.target.value = '';
     },
   },

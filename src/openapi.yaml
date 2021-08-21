@@ -66,19 +66,19 @@ paths:
                   properties:
                     username:
                       type: string
-                      example: 'zeynab'
+                      example: admin
                     first_name:
                       type: string
-                      example: 'Zeynab'
+                      example: zeynab
                     last_name:
                       type: string
-                      example: 'Heydarzadeh'
+                      example: heydarzdeh
                     email:
                       type: string
-                      example: 'myemail@gmail.com'
+                      example: myemail@gmail.com
                     phone_number:
                       type: integer
-                      example: 1234567
+                      example: 123456789
                 
         '400':
           $ref: '#/components/responses/400Error'

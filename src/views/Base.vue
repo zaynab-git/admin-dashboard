@@ -21,7 +21,10 @@ export default {
 
     mounted(){
       this.$store.dispatch("GET_USER");
-      this.$store.dispatch("connect_to_websocket")
+      const wait = new Promise(r => setTimeout(r, 2000));
+      wait.then(() => {
+        this.$store.dispatch("connect_to_websocket")
+      });
     },
 
 }

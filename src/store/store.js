@@ -70,11 +70,11 @@ export default new Vuex.Store({
     },
 
     add_message (state, payload) {
-      if (!(payload.username in state.messages)){
-        state.messages[payload.username] = new Array();
+      if (!(payload.sender in state.messages)){
+        state.messages[payload.sender] = new Array();
         state.messages = {...state.messages}
       }
-      state.messages[payload.username].push({username: payload.username, message: payload.message, id: payload.id});
+      state.messages[payload.sender].push({receiver: payload.receiver, sender: payload.sender, message: payload.message, id: payload.id});
     },
 
     set_vuetifyandi18n (state, payload) {
@@ -132,8 +132,7 @@ export default new Vuex.Store({
     },
 
     connect_to_websocket() {
-      console.log("Starting connection to WebSocket Server")
-      this.state.chatConnection = new WebSocket("ws://localhost:8080")
+      this.state.chatConnection = new WebSocket("ws://localhost:8080/" + this.state.user.userName)
       let that = this;
       this.state.chatConnection.onmessage = function(event) {
         that.commit('add_message',JSON.parse(event.data));
