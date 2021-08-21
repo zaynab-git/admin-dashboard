@@ -13,6 +13,7 @@ export default new Vuex.Store({
     vuetify: '',
     i18n: '',
 
+    messages: {},
 
     user: {
       firstName: "",
@@ -48,9 +49,31 @@ export default new Vuex.Store({
   getters : {
     isLoggedIn: state => !!state.token,
     authStatus: state => state.status,
+    messages: state => {
+      let sep_msgs = state.messages;
+      let con_msgs = [];
+      Object.keys(sep_msgs).forEach(function(key) {
+        con_msgs = con_msgs.concat(sep_msgs[key])
+      });
+      con_msgs.sort(function(a, b) {
+        return a.id - b.id;
+      });
+      return con_msgs
+    }
   },
-
   mutations: {
+
+    set_username (state, payload) {
+      state.username = payload
+    },
+
+    add_message (state, payload) {
+      if (!(payload.username in state.messages)){
+        state.messages[payload.username] = new Array();
+        state.messages = {...state.messages}
+      }
+      state.messages[payload.username].push({username: payload.username, message: payload.message, id: payload.id});
+    },
 
     set_vuetifyandi18n (state, payload) {
         state.vuetify = payload.vuetify
@@ -114,6 +137,7 @@ export default new Vuex.Store({
           const token = resp.data.token
           localStorage.setItem('token', token)
           commit('auth_success', token)
+          commit('set_username',user.username)
           resolve(resp)
         })
         .catch(err => {

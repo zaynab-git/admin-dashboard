@@ -68,6 +68,8 @@
           { title: "drawer.dashboard", icon: 'mdi-view-dashboard', to: '/' },
           { title: "drawer.setting", icon: 'mdi-cog', to: '/setting' },
           { title: "drawer.profile", icon: 'mdi-account', to: '/profile' },
+          { title: "drawer.chat", icon: 'mdi-chat-question', to: '/chat' },
+
         ],
     }),
 

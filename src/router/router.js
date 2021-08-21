@@ -26,6 +26,11 @@ const routes = [
         path: 'profile',
         component: () => import('@/views/Profile'),
       },
+      {
+        path: 'chat',
+        name: 'Chat',
+        component: () => import('@/views/Chat'),
+      },
     ],
   },
   {
@@ -33,11 +38,7 @@ const routes = [
     name: 'LogIn',
     component: () => import('@/views/LogIn'),
   },
-  {
-    path: '/chat',
-    name: 'Chat',
-    component: () => import('@/views/Chat'),
-  }
+  
 ];
 
 export default new VueRouter({

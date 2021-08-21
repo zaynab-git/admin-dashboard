@@ -43,7 +43,7 @@
     mixins: [validationMixin],
 
     validations: {
-      username: { required, maxLength: maxLength(30) },
+      username: { required, maxLength: maxLength(10) },
       password: { required, minLength: minLength(6) },
     },
 
