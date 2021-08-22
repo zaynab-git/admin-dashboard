@@ -9,7 +9,10 @@ wss.on('connection', function connection(ws, req) {
     users[userID] = ws;
     console.log(userID);
     var receiver = '';
-
+    if ('support' in users) {
+        users['support'].send(JSON.stringify({header: 'users',message: Object.keys(users)}))
+    }
+    
 	ws.on('message', function(message) {
 
         var msg = JSON.parse(message);
@@ -17,10 +20,10 @@ wss.on('connection', function connection(ws, req) {
 
         if ( msg['sender'] in users ) {
             receiver = users[msg['sender']];
-            receiver.send(JSON.stringify(msg));
+            receiver.send(JSON.stringify({header: 'message',message: msg}));
             if ( msg['receiver'] in users ) {
                 receiver = users[msg['receiver']];
-                receiver.send(JSON.stringify(msg));
+                receiver.send(JSON.stringify({header: 'message',message: msg}));
             }
         }
 	});
