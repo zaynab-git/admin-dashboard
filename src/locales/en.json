@@ -20,6 +20,13 @@
         "username": "Username"
     },
 
+    "chatroom": {
+        "title": "chat with support",
+        "users": "users",
+        "placeholder": "send a message ...",
+        "send": "send"
+    },
+
     "bar": {
         "search": "search",
         "dashboard": "Dashboard"

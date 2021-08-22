@@ -12,6 +12,8 @@ export default new Vuex.Store({
 
     vuetify: '',
     i18n: '',
+    receiver: '',
+    receivers: [],
 
     messages: {},
     chatConnection: '',
@@ -60,6 +62,9 @@ export default new Vuex.Store({
         return a.id - b.id;
       });
       return con_msgs
+    },
+    receivers: state => {
+      return state.receivers.filter(function(r) { return r != 'support' })
     }
   },
 
@@ -78,20 +83,20 @@ export default new Vuex.Store({
     },
 
     set_vuetifyandi18n (state, payload) {
-        state.vuetify = payload.vuetify
-        state.i18n = payload.i18n
+        state.vuetify = payload.vuetify;
+        state.i18n = payload.i18n;
     },
 
     SET_DRAWER (state, payload) {
-      state.drawer = payload
+      state.drawer = payload;
     },
     SET_LANGUAGE (state, payload) {
       if (payload != ''){
-        state.currentLanguage = payload
-        state.i18n.locale = payload.value
-        state.vuetify.rtl = payload.rtl
-        state.vuetify.lang.current = payload.value
-        localStorage.setItem('language', JSON.stringify(payload))
+        state.currentLanguage = payload;
+        state.i18n.locale = payload.value;
+        state.vuetify.rtl = payload.rtl;
+        state.vuetify.lang.current = payload.value;
+        localStorage.setItem('language', JSON.stringify(payload));
       }
   
     },
@@ -102,19 +107,23 @@ export default new Vuex.Store({
       state.user.phoneNumber = payload.phone_number;
     },
     auth_request(state){
-      state.status = 'loading'
+      state.status = 'loading';
     },
     auth_success(state, token){
-      state.status = 'success'
-      state.token = token
+      state.status = 'success';
+      state.token = token;
     },
     auth_error(state){
-      state.status = 'error'
+      state.status = 'error';
     },
     logout(state){
-      state.status = ''
-      state.token = ''
+      state.status = '';
+      state.token = '';
+      this.state.messages = {};
     },
+    set_receiver(state, payload) {
+      state.receiver = payload;
+    }
   },
 
   actions: {
@@ -131,14 +140,31 @@ export default new Vuex.Store({
     },
 
     connect_to_websocket() {
-      this.state.chatConnection = new WebSocket("ws://localhost:8080/" + this.state.user.userName)
-      let that = this;
-      this.state.chatConnection.onmessage = function(event) {
-        that.commit('add_message',JSON.parse(event.data));
-      }
+      if (this.state.user.userName != '') {
+        this.state.chatConnection = new WebSocket("ws://localhost:8080/" + this.state.user.userName)
+        let that = this;
+        this.state.chatConnection.onmessage = function(event) {
 
-      this.state.chatConnection.onopen = function() {
-        console.log("Successfully connected to the echo websocket server...");
+          // else {
+          //   that.commit('set_receiver','zeynab')
+          // }
+
+          if (JSON.parse(event.data).header == 'message') {
+            that.commit('add_message',JSON.parse(event.data)['message']);
+          }
+          else if (JSON.parse(event.data).header == 'users') {
+            that.state.receivers = JSON.parse(event.data).message;
+          }
+        }
+
+        this.state.chatConnection.onopen = function() {
+          console.log("Successfully connected to the echo websocket server...");
+          if (that.state.user.userName != 'support') {
+            that.commit('set_receiver','support')
+          }
+          console.log(that.state.receiver)
+
+        }
       }
     },
 

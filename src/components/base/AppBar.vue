@@ -4,6 +4,7 @@
     absolute
     clipped-left
     dense
+    fixed
     color="transparent"
     height="75"
   >
