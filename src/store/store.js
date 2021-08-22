@@ -23,7 +23,7 @@ export default new Vuex.Store({
       lastName: "",
       email: "",
       phoneNumber: "",
-      userName: ""
+      userName: localStorage.getItem('userName') || '',
     },
 
     drawer: null,
@@ -55,13 +55,18 @@ export default new Vuex.Store({
     messages: state => {
       let sep_msgs = state.messages;
       let con_msgs = [];
-      Object.keys(sep_msgs).forEach(function(key) {
-        con_msgs = con_msgs.concat(sep_msgs[key])
-      });
-      con_msgs.sort(function(a, b) {
-        return a.id - b.id;
-      });
-      return con_msgs
+      // Object.keys(sep_msgs).forEach(function(key) {
+      //   con_msgs = con_msgs.concat(sep_msgs[key])
+      // });
+      if (state.receiver in sep_msgs)  con_msgs = con_msgs.concat(sep_msgs[state.receiver]);
+      if (state.user.userName in sep_msgs)   con_msgs = con_msgs.concat(sep_msgs[state.user.userName].filter(function(r) { return r.receiver == state.receiver }));
+
+      if (con_msgs.length != 0) {
+        con_msgs.sort(function(a, b) {
+          return a.id - b.id;
+        });
+      }
+      return con_msgs;
     },
     receivers: state => {
       return state.receivers.filter(function(r) { return r != 'support' })
@@ -71,7 +76,7 @@ export default new Vuex.Store({
   mutations: {
 
     set_username (state, payload) {
-      state.username = payload
+      state.user.userName = payload
     },
 
     add_message (state, payload) {
@@ -145,10 +150,6 @@ export default new Vuex.Store({
         let that = this;
         this.state.chatConnection.onmessage = function(event) {
 
-          // else {
-          //   that.commit('set_receiver','zeynab')
-          // }
-
           if (JSON.parse(event.data).header == 'message') {
             that.commit('add_message',JSON.parse(event.data)['message']);
           }
@@ -162,8 +163,6 @@ export default new Vuex.Store({
           if (that.state.user.userName != 'support') {
             that.commit('set_receiver','support')
           }
-          console.log(that.state.receiver)
-
         }
       }
     },
@@ -176,7 +175,7 @@ export default new Vuex.Store({
           // const token = resp.data.token
           const token = 'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJ0b3B0YWwuY29tIiwiZXhwIjoxNDI2NDIwODAwLCJodHRwOi8vdG9wdGFsLmNvbS9qd3RfY2xhaW1zL2lzX2FkbWluIjp0cnVlLCJjb21wYW55IjoiVG9wdGFsIiwiYXdlc29tZSI6dHJ1ZX0.yRQYnWzskCZUxPwaQupWkiUzKELZ49eM7oWxAQK_ZXw'
           localStorage.setItem('token', token)
-          this.state.user.userName = user.username
+          localStorage.setItem('userName', user.username)
           commit('auth_success', token)
           commit('set_username',user.username)
           resolve(resp)

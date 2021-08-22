@@ -10,7 +10,7 @@
     <v-list-item>
         <v-list-item-content>
           <v-list-item-title class="text-h6">
-            {{ $t("drawer.title") }}
+            {{ this.$store.state.user.userName }}
           </v-list-item-title>
           <v-list-item-subtitle>
             {{ $t("drawer.subtitle") }}

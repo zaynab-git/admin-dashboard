@@ -3,7 +3,7 @@
     <v-row class="mx-3 mt-3">
       <v-col>
                 <v-card style=" width: 100%;">
-                    <v-card-title>{{ $t("chatroom.title") }}</v-card-title>
+                    <v-card-title>{{ $t("chatroom.title") }} {{ this.$store.state.receiver }}</v-card-title>
                     <v-divider></v-divider>
                     <v-list class="mx-3" height="400px"  style="overflow-y: scroll;" v-chat-scroll>
                       <v-list-item

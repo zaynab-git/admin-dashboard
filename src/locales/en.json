@@ -4,7 +4,6 @@
         "setting": "Setting",
         "about": "About",
         "profile": "Profile",
-        "title": "zeynab",
         "subtitle": "welcome to your dashboard",
         "log-out": "LOG OUT",
         "chat": "Chat With Support"
@@ -21,7 +20,7 @@
     },
 
     "chatroom": {
-        "title": "chat with support",
+        "title": "chat with ",
         "users": "users",
         "placeholder": "send a message ...",
         "send": "send"
