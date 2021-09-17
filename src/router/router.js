@@ -5,46 +5,44 @@ Vue.use(VueRouter);
 
 const routes = [
   {
-    
-        name: 'Home',
-        path: '/',
-        component: () => import('@/views/Base'),
-        meta: {
-          requiresAuth: true
-        },
-        children: [
-          {
-            name: 'Table',
-            path: '',
-            component: () => import('@/views/Table'),
-          },
-          {
-            name: 'Setting',
-            path: '/setting',
-            component: () => import('@/views/Setting'),
-          },
-          {
-            name: 'Profile',
-            path: '/profile',
-            component: () => import('@/views/Profile'),
-          },
-          {
-            path: '/chat',
-            name: 'Chat',
-            component: () => import('@/views/Chat'),
-          },
-        ]
+    name: "Home",
+    path: "/",
+    component: () => import("@/views/Base"),
+    meta: {
+      requiresAuth: true,
+    },
+    children: [
+      {
+        name: "Table",
+        path: "",
+        component: () => import("@/views/Table"),
       },
       {
-        path: '/login',
-        name: 'LogIn',
-        component: () => import('@/views/LogIn'),
+        name: "Setting",
+        path: "/setting",
+        component: () => import("@/views/Setting"),
       },
-  
+      {
+        name: "Profile",
+        path: "/profile",
+        component: () => import("@/views/Profile"),
+      },
+      {
+        path: "/chat",
+        name: "Chat",
+        component: () => import("@/views/Chat"),
+      },
+    ],
+  },
+  {
+    path: "/login",
+    name: "LogIn",
+    component: () => import("@/views/LogIn"),
+  },
 ];
 
 export default new VueRouter({
-  mode: 'history',
+  mode: "history",
   base: process.env.BASE_URL,
-  routes
-})
+  routes,
+});
