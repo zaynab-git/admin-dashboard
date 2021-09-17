@@ -4,6 +4,7 @@ import store from "./store/store";
 import vuetify from "./plugins/vuetify";
 import i18n from './i18n';
 import VueChatScroll from 'vue-chat-scroll';
+import App from './App';
 
 Vue.use(VueChatScroll)
 
@@ -31,5 +32,5 @@ new Vue({
   store,
   vuetify,
   i18n,
-  render: (h) => {return h('router-view')},
+  render: h => h(App),
 }).$mount("#app");

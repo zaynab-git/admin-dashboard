@@ -5,13 +5,9 @@ Vue.use(VueRouter);
 
 const routes = [
   {
-    path: '/',
-    name: 'App',
-    component: () => import('@/App'),
-    children: [
-      {
+    
         name: 'Home',
-        path: '',
+        path: '/',
         component: () => import('@/views/Base'),
         meta: {
           requiresAuth: true
@@ -24,29 +20,26 @@ const routes = [
           },
           {
             name: 'Setting',
-            path: 'setting',
+            path: '/setting',
             component: () => import('@/views/Setting'),
           },
           {
             name: 'Profile',
-            path: 'profile',
+            path: '/profile',
             component: () => import('@/views/Profile'),
           },
           {
-            path: 'chat',
+            path: '/chat',
             name: 'Chat',
             component: () => import('@/views/Chat'),
           },
         ]
       },
       {
-        path: 'login',
+        path: '/login',
         name: 'LogIn',
         component: () => import('@/views/LogIn'),
       },
-    ],
-    
-  },
   
 ];
 
