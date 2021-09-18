@@ -1,6 +1,7 @@
 <template>
   <v-container fluid>
     <v-data-table
+    ref="dessert table"
       :headers="headers"
       :items="desserts"
       :items-per-page="5"

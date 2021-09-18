@@ -1,8 +1,8 @@
 <template>
   <v-col class="ma-5">
     <v-row>
-      <v-card max-width="600">
-        <v-card-title>{{ $t("profile.profile-title") }}</v-card-title>
+      <v-card max-width="600" ref="profile info">
+        <v-card-title ref="profile">{{ $t("profile.profile-title") }}</v-card-title>
         <v-card-subtitle>{{ $t("profile.profile-subtitle") }}</v-card-subtitle>
         <v-list>
           <v-list-item>
